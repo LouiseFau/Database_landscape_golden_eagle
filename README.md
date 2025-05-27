@@ -1,1 +1,3 @@
-# Database_terrain_based_features_golden_eagle
+# Code for identifying landscape utilization strategies in dispersing juvenile golden eagles
+
+This repository comprises four codes. The first one, called "Database", describe the sampling of the GPS locations and their associated terrain values. The second code, called "Variables selection", identifies correlation between landscape variables and select the variables for the principal component analysis (PCA). On the basis of the pre-selection of the landscape variable, the third code obtain a PCA and identify three landscape strategy based on statistical indicators. The fourth code allows calculate the Mahalanobis distance to compare individuals to themselves across time. 
