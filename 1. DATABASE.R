@@ -3,7 +3,7 @@
 # II. extract from each previously constructed raster layers, the values of each pixels under the localisation of a golden eagle (step 3), 
 # III. summarize the collected data per individual using several statistical tools (mean, maximum, minimum, etc ...) (step 4),
 # IV. operating a data-reduction by pre-selecting variables that will be used in the PCA (step 5).
-# Louise FAURE, 28.07.2025
+# Louise FAURE, MPI, 28.07.2025
 
 
 #library
