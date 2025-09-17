@@ -20,7 +20,7 @@ library(NbClust)
 library(mclust)
 library(gt)
 
-eagle_PCA <- readRDS("C:/Users/lfaure7/Desktop/Article LUS/Individual_per_FtoD15/resultsFtoD15(test-woody64ind).rds")
+eagle_PCA <- readRDS("your previous repository path.rds")
 
 # STEP 1 : SELECTION OF PCA DIMENSION ------------------------------------------
 # Copy of the first dataset without the weight column
@@ -279,7 +279,7 @@ mat <- mat %>%
   filter(rowSums(!is.na(select(., `1`:`15`))) > 0)
 
 # Merge with death metadata
-death <- read.csv("C:/Users/lfaure7/OneDrive/MEMOIRE M2/Sauvegarde - My Passport/memoire_aigle/wetransfer_death_document-csv_2023-06-30_1528/death_document.csv",
+death <- read.csv("death_document.csv",
                   stringsAsFactors = FALSE)
 death$individual.local.identifier <- gsub("\\(.*\\)", "", death$individual.local.identifier)
 death$individual.local.identifier <- trimws(death$individual.local.identifier)
