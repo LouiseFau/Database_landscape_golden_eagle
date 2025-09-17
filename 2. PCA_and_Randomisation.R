@@ -1,7 +1,7 @@
 # R. Script to identify variations between and within individuals
 # This script is following the second loop of the R.Script called "Database_and_variables_selection". This script groups individuals based on their landscape utilisation strategies defines during the Steps 1 to 2, 
-# using a clustering method (Step 3 to 4). Then, it identifies the consistency in landscape features used by measuring the Mahalanobis distance between (I) consecutive individual-week point of the dispersal phase (Steps 5) 
-compared to a random distribution (Step 6) and (II) pre-dispersal and each of the individual-week points of the dispersal phase (Step 
+# using a clustering method (Step 3 to 4). Then, it identifies the consistency in landscape features used by measuring the Mahalanobis distance between (I) consecutive individual-week points of the dispersal phase 
+# compared to a random distribution (Step 4 to 5) and (II) pre-dispersal and each of the individual-week points of the dispersal phase (Step 6). 
 # L. Faure, MPI, 17.09.2025
 
 library(FactoMineR)
