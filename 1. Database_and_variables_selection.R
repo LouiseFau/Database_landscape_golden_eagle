@@ -27,31 +27,31 @@ library(reshape2)
 
 # STEP 0 : load the required data -------------------------------------------------------------------------------------------------------------------------
 # Geoid and raster
-geo <- terra::rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data/geoide/us_nga_egm96_15.tif")
+geo <- terra::rast("us_nga_egm96_15.tif")
 utm_crs <- "+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs"
 
 # Topographic variables
-elevation_25 <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data/pretraitements/Region-Alpes-Dem/region-alpes-dem.tif")
-slope_25 <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data/pretraitements/DEM_25m/slope/slope_25.tif")
-TRI_25 <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data/pretraitements/DEM_25m/TRI/Terrain Ruggedness Index (TRI)Corrected.tif")
-TPI_25_small_scale <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data/pretraitements/DEM_25m/TPI/Topographic Position Index.tif")
-INDEX_DIST_TO_RIDGE <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/donnees/raster/topography/distance_to_ridge_line_complete_version.tif")
+elevation_25 <- rast("region-alpes-dem.tif")
+slope_25 <- rast("slope_25.tif")
+TRI_25 <- rast("Terrain Ruggedness Index (TRI)Corrected.tif")
+TPI_25_small_scale <- rast("Topographic Position Index.tif")
+INDEX_DIST_TO_RIDGE <- rast("distance_to_ridge_line_complete_version.tif")
 
 # Human variables
-CLC_ALPS <- terra::rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/Data_CLC/CLC_Alps/CLC_longlat/CLC_longlat.tif")
-BUILDING_HEIGHT <- terra::rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/Building/Building_height/BUILDING_HIGHT/BUILDING_longlat/building_long_lat.tif")
-DIST_TO_10M_BUILDING <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/Building/Distance_to_hight_building/10M_building/10MBUILDING_DIST_Longlat/DIST_TO_10MBUILDING_longlat.tif")
-DIST_TO_POWER_LINE <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/raster_map_distance/raster_distance_power_line/DIST_POWERLINE_longlat/dist_powerline_longlat.tif") 
-DIST_TO_ROADS <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/raster_map_distance/raster_distance_roads/dist_road_longlat/dist_road_longlat.tif") 
-DIST_TO_AERIALWAYS <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/raster_map_distance/raster_distance_aerialways/DIST_AERIALWAYS_longlat/DIST_AERIALWAYS_longlat.tif") 
-DIST_TO_NEAREST_BUILT_SURFACE <- rast("C:/Users/lfaure7/Desktop/Article LUS/Script Tests/dist_to_settlement_res50.tif")
-DIST_TO_WIND_TURBINE <- rast("C:/Users/lfaure7/OneDrive/MEMOIRE M2/eagle_projet/data_landuse/raster_map_distance/distance_wind_turbine/raster_distance_wind_turbine_CRS_CLC.tif")
+CLC_ALPS <- terra::rast("CLC_longlat.tif")
+BUILDING_HEIGHT <- terra::rast("building_long_lat.tif")
+DIST_TO_10M_BUILDING <- rast("DIST_TO_10MBUILDING_longlat.tif")
+DIST_TO_POWER_LINE <- rast("dist_powerline_longlat.tif") 
+DIST_TO_ROADS <- rast("dist_road_longlat.tif") 
+DIST_TO_AERIALWAYS <- rast("DIST_AERIALWAYS_longlat.tif") 
+DIST_TO_NEAREST_BUILT_SURFACE <- rast("dist_to_settlement_res50.tif")
+DIST_TO_WIND_TURBINE <- rast("raster_distance_wind_turbine_CRS_CLC.tif")
 
 # set output directory 
-output_dir <- "C:/Users/lfaure7/Desktop/Article LUS/week_raster_4"
+output_dir <- "enter your output directory"
 
 # Emigration date
-emig_dates <- readRDS("C:/Users/lfaure7/Desktop/Article LUS/emigration_dates_updated/fledging_emigration.rds")
+emig_dates <- readRDS("fledging_emigration.rds")
 
 # Update the date for Matsch19 (Swiss Ornithological Institute estimation)
 emig_dates$emigration_dt <- as.POSIXct(emig_dates$emigration_dt)
@@ -71,7 +71,7 @@ emig_dates <- emig_dates %>%
 # STEP 1 : list all the file ------------------------------------------------------------------------------------------------------------------------------
   # (loop them all and skip inside the loop)
   list_file_all <- list.files(
-      "C:/Users/lfaure7/OneDrive/MEMOIRE M2/Sauvegarde - My Passport/memoire_aigle/Kami_ordi/gps_for_Louise",
+      "gps_for_Louise",
       full.names = TRUE, pattern = "\\.rds$"
     )
 valid_ids <- emig_dates$individual.local.identifier
@@ -237,7 +237,7 @@ for (w in 0:15) {
 
 
 # STEP 4 : loop to merge categorical (vegetation) and numerical variables (terrain-based) ------------------------------------------------------------------
-files <- list.files("C:/Users/lfaure7/Desktop/Article LUS/week_raster_3", pattern = ".rds", full.names = TRUE)
+files <- list.files("your path to your directory", pattern = ".rds", full.names = TRUE)
 PCA_eagle <- data.frame()
 
 for (ind in seq_along(files)) {
